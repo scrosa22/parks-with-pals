@@ -37,11 +37,11 @@ const resolvers = {
       return { token, profile };
     },
 
-    addHikes: async (parent, { profileId, hike }) => {
+    addSkill: async (parent, { profileId, skill }) => {
       return Profile.findOneAndUpdate(
         { _id: profileId },
         {
-          $addToSet: { hikes: hike },
+          $addToSet: { skills: skill },
         },
         {
           new: true,
@@ -52,10 +52,10 @@ const resolvers = {
     removeProfile: async (parent, { profileId }) => {
       return Profile.findOneAndDelete({ _id: profileId });
     },
-    removeHikes: async (parent, { profileId, hike }) => {
+    removeSkill: async (parent, { profileId, skill }) => {
       return Profile.findOneAndUpdate(
         { _id: profileId },
-        { $pull: { hikes: hike } },
+        { $pull: { skills: skill } },
         { new: true }
       );
     },
