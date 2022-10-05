@@ -36,7 +36,7 @@ const SkillForm = ({ profileId }) => {
         >
           <div className="col-12 col-lg-9">
             <input
-              placeholder="What do you think about my music?"
+              placeholder="Parks review"
               value={skill}
               className="form-input w-100"
               onChange={(event) => setSkill(event.target.value)}
@@ -57,7 +57,7 @@ const SkillForm = ({ profileId }) => {
       ) : (
         <p>
           You need to be logged in to write something{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          <Link to="/login">login</Link> or <Link to="/signup">signup</Link>
         </p>
       )}
     </div>

@@ -18,7 +18,7 @@ const Friends = () => {
           ) : (
             <ProfileList
               profiles={profiles}
-              title="Musician friends"
+              title="✨ Parks Reviews ✨:"
             />
           )}
         </div>

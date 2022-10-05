@@ -1,8 +1,13 @@
 import React from 'react';
+// import Background from '../Images/trees.jpg';
+
 
 export default function Home() {
   return (
-    <div>
+    <div class="p-5 text-center bg-image" 
+    // id="Home" style={{ backgroundImage: "url(" + Background + ")"
+// }} 
+>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
         velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
@@ -17,9 +22,9 @@ export default function Home() {
         <br></br><br></br>
         <div>
         <iframe
-      width="853"
-      height="480"
-      src={`https://www.youtube.com/embed/t4sK8d48Exs`}
+      width="653"
+      height="280"
+      src={`https://www.youtube.com/embed/zTBmv-Gzf2w`}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen

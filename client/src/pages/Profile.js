@@ -23,12 +23,12 @@ const Profile = () => {
   return (
     <div>
       <h2 className="card-header" style={{  }}>
-       {profile.name}'s music:
+       {profile.name}'s comments:
       </h2>
 
       {profile.skills?.length > 0 && <SkillsList skills={profile.skills} />}
 
-      <div className="my-4 p-4" style={{ backgroundColor: 'lightblue' }}>
+      <div className="my-12 p-12" style={{ backgroundColor: 'lightblue' }}>
         <SkillForm profileId={profile._id} />
       </div>
     </div>
