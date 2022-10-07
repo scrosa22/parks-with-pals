@@ -26,6 +26,67 @@ const typeDefs = gql`
     addSkill(profileId: ID!, skill: String!): Profile
     removeProfile(profileId: ID!): Profile
     removeSkill(profileId: ID!, skill: String!): Profile
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    type activities {
+      id:
+      name:
+    }
+
+    type entranceFees {
+      cost: String
+      description: String
+      title: String
+    }
+  
+  type Park {
+    {
+      "data":[
+      {
+
+      fullName: String      
+      parkCode: String
+      description: String
+      latitude: String
+      longitude: String 
+      latLong: String
+      activities:[activities]
+      states: String
+      entranceFees:[]
+      entrancePasses:[]
+      fees:[]
+      directionsUrl: String 
+      operatingHours:[]
+      addresses:[]
+      images:[]
+      weatherInfo: String
+      name: String
+      designation: String
+      
+      
+      }
+      
+      ]
+      }
+
+
+
+
+
+
   }
 `;
 
