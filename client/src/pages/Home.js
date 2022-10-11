@@ -1,8 +1,14 @@
 import React from 'react';
+import ParkSearch from '../components/ParkSearch';
+// import Background from '../Images/trees.jpg';
+
 
 export default function Home() {
   return (
-    <div>
+    <div class="p-5 text-center bg-image" 
+    // id="Home" style={{ backgroundImage: "url(" + Background + ")"
+// }} 
+>
       <p>
       Parks with Pals provides you with a user-friendly and intuitive resource for finding the national parks in 
         each state. The website provides users with an opportunity to leave comments
@@ -11,9 +17,9 @@ export default function Home() {
         <br></br><br></br>
         <div>
         <iframe
-      width="853"
-      height="480"
-      src={`https://www.youtube.com/embed/t4sK8d48Exs`}
+      width="653"
+      height="280"
+      src={`https://www.youtube.com/embed/zTBmv-Gzf2w`}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
@@ -21,6 +27,7 @@ export default function Home() {
     />
         </div>
       </p>
+      <ParkSearch />
     </div>
   );
 }

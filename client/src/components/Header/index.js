@@ -13,8 +13,10 @@ const Header = () => {
       <div className="container flex-column justify-space-between-lg justify-center align-start text-center">
         <Link className="text-dark" to="/">
           <h1 className="m-0" style={{ fontSize: '2rem' }}>
-          🎶 Listen to the Music 🎶
-          </h1><br></br><br></br>
+
+          ꧁ Parks with Pals  ꧂
+          </h1><br></br>
+
         </Link>
         <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
         </p>
@@ -35,7 +37,7 @@ const Header = () => {
                 Signup
               </Link>
               <Link className="btn btn-outline-primary mr-5" to="/Friends">
-                Friends
+              Reviews
               </Link>
               
               

@@ -10,9 +10,9 @@ const SkillsList = ({ skills }) => {
       <div className="flex-row justify-space-between my-6">
         {skills &&
           skills.map((skill) => (
-            <div key={skill} className="col-12 col-xl-6">
-              <div className="card mb-3">
-                <h4 className="card-header bg-light text-dark p-2 m-0">
+            <div key={skill} className="col-12 col-xl-12">
+              <div className="card mb-12">
+                <h4 className="card-header bg-light text-dark p-5 m-0">
                   {skill} <br />
                 </h4>
               </div>

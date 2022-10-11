@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || `mongodb+srv://parkpals2:mongoDBparks@cluster0.7byl7zz.mongodb.net/test`,
+  process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/parkpalsDB`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
