@@ -4,16 +4,10 @@ export default function Home() {
   return (
     <div>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
-        velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
-        ac dui fermentum, sed luctus urna tincidunt. Etiam ut feugiat ex. Cras
-        non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna imperdiet
-        ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras
-        rutrum ligula in tincidunt commodo. Morbi sit amet mollis orci, in
-        tristique ex. Donec nec ornare elit. Donec blandit est sed risus feugiat
-        porttitor. Vestibulum molestie hendrerit massa non consequat. Vestibulum
-        vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus.
+      Parks with Pals provides you with a user-friendly and intuitive resource for finding the national parks in 
+        each state. The website provides users with an opportunity to leave comments
+        on their experiences at the parks so that other users can glean insights and suggestions
+        for their upcoming travel plans. To start, sign up and enjoy. Happy travels. 
         <br></br><br></br>
         <div>
         <iframe

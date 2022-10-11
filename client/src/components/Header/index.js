@@ -14,7 +14,7 @@ const Header = () => {
         <Link className="text-dark" to="/">
           <h1 className="m-0" style={{ fontSize: '2rem' }}>
           🎶 Listen to the Music 🎶
-          </h1><br></br>
+          </h1><br></br><br></br>
         </Link>
         <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
         </p>
