@@ -1,11 +1,21 @@
 import React from 'react';
 
-    const stateSelect = document.getElementById('state-select')
-    const stateList = document.getElementById('state-list')
+const stateList = document.getElementById('state-list')
 
 
+let stateSearch = document.getElementById('parksearch-box')
+const stateSelect = document.getElementById('parksearch-btn')
 
-function ParkSearch() {
+
+function displayparks (event) {
+  event.preventDefault();
+  if(stateSelect.val().trim()!==""){
+      stateSearch=stateSelect.val().trim();
+      ParkSearch(stateSearch);
+  }
+}
+
+function ParkSearch(stateSearch) {
 
   
   
@@ -14,7 +24,7 @@ function ParkSearch() {
       .then(data => {
         data.data.forEach(state => {
           const element = document.createElement("div")
-          element.innerText += `<h5>Name: ${state.name}</h5>`
+          element.innerText += state.name
           element.innerText += state.designation
           stateList.append(element)
 
@@ -22,6 +32,8 @@ function ParkSearch() {
           
         }) 
   });
+
+ 
 
 
   return (
@@ -37,7 +49,10 @@ function ParkSearch() {
         </select>
       </div>
 
-
+      <form class="js-form">
+      <input type="text" id="parksearch-box" class="form-control form-control-lg rounded" value="GA"/>
+      <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
+      </form>
       <div id="state-list"></div>
 
 
@@ -53,7 +68,7 @@ function ParkSearch() {
 
         </form>
         <br></br>
-        <button type="button" class="btn btn-outline-primary">Search for a park</button>
+        <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
         </div> */}
 
 
