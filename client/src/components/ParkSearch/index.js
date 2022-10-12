@@ -16,9 +16,7 @@ function displayparks (event) {
 }
 
 function ParkSearch(stateSearch) {
-
-  
-  
+ 
       fetch('https://developer.nps.gov/api/v1/parks?stateCode=GA&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0')
       .then(res => res.json())
       .then(data => {

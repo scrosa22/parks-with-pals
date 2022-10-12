@@ -39,55 +39,57 @@ const typeDefs = gql`
 
 
 
-
-
-    type activities {
-      id:
-      name:
-    }
-
-    type entranceFees {
-      cost: String
-      description: String
-      title: String
-    }
-  
-  type Park {
-    {
-      "data":[
-      {
-
-      fullName: String      
-      parkCode: String
-      description: String
-      latitude: String
-      longitude: String 
-      latLong: String
-      activities:[activities]
-      states: String
-      entranceFees:[]
-      entrancePasses:[]
-      fees:[]
-      directionsUrl: String 
-      operatingHours:[]
-      addresses:[]
-      images:[]
-      weatherInfo: String
-      name: String
-      designation: String
-      
-      
-      }
-      
-      ]
-      }
-
-
-
-
-
-
   }
 `;
 
 module.exports = typeDefs;
+
+
+
+
+
+
+
+// type activities {
+//   id:
+//   name:
+// }
+
+// type entranceFees {
+//   cost: String
+//   description: String
+//   title: String
+// }
+
+// type Park {
+// {
+//   "data":[
+//   {
+
+//   fullName: String      
+//   parkCode: String
+//   description: String
+//   latitude: String
+//   longitude: String 
+//   latLong: String
+//   activities:[activities]
+//   states: String
+//   entranceFees:[]
+//   entrancePasses:[]
+//   fees:[]
+//   directionsUrl: String 
+//   operatingHours:[]
+//   addresses:[]
+//   images:[]
+//   weatherInfo: String
+//   name: String
+//   designation: String
+  
+  
+//   }
+  
+//   ]
+//   }
+
+
+

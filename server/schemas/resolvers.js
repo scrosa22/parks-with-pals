@@ -3,7 +3,7 @@ const { Profile } = require('../models');
 const { signToken } = require('../utils/auth');
 const fetch = require("node-fetch");
 
-APIKey = 'Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0'
+// APIKey = 'Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0'
 
 
 
@@ -17,10 +17,10 @@ const resolvers = {
       return Profile.findOne({ _id: profileId });
     },
 
-    Parks: async (parent,{ parksearch}) => {
-      const response = await fetch(`https://developer.nps.gov/api/v1/parks?parkCode=${parksearch}` + `&api_key=${APIKey}`);
-      return response.json();
-    }
+    // Parks: async (parent,{ parksearch}) => {
+    //   const response = await fetch(`https://developer.nps.gov/api/v1/parks?parkCode=${parksearch}` + `&api_key=${APIKey}`);
+    //   return response.json();
+    // }
   
   },
 
