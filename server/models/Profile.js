@@ -19,7 +19,7 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  hikes: [
+  skills: [
     {
       type: String,
       trim: true,
