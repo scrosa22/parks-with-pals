@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 import ProfileList from '../components/ProfileList';
+import { Link } from 'react-router-dom';
 
 import { QUERY_PROFILES } from '../utils/queries';
 
@@ -11,6 +12,7 @@ const Friends = () => {
 
   return (
     <main>
+      <Link to="/Home">back to the Home</Link>
       <div className="flex-row justify-center">
         <div className="col-12 col-md-10 my-3">
           {loading ? (
