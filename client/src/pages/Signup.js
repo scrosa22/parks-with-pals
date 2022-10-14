@@ -50,7 +50,7 @@ const Signup = () => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/Friends">back to the comments</Link>
+                <Link to="/Reviews">back to the comments</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
