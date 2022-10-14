@@ -16,8 +16,8 @@ export default function PortfolioContainer() {
     if (currentPage === 'Login') {
       return <Login />;
     }
-    if (currentPage === 'Friends') {
-      return <Friends />;
+    if (currentPage === 'Reviews') {
+      return <Reviews />;
     }
     return <Home />;
   };

@@ -5,7 +5,7 @@ import ProfileList from '../components/ProfileList';
 
 import { QUERY_PROFILES } from '../utils/queries';
 
-const Friends = () => {
+const Reviews = () => {
   const { loading, data } = useQuery(QUERY_PROFILES);
   const profiles = data?.profiles || [];
 
@@ -27,4 +27,4 @@ const Friends = () => {
   );
 };
 
-export default Friends;
+export default Reviews;
