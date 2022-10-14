@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -22,6 +23,7 @@ const Profile = () => {
   }
   return (
     <div>
+      <Link to="/Home">back to the Home</Link>
       <h2 className="card-header" style={{  }}>
        {profile.name}'s comments:
       </h2>
