@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const parksSchema = new Schema({
-    fullName: {
+  fullName: {
     type: String,
     required: true,
     unique: true,

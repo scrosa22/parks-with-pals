@@ -20,7 +20,11 @@ const resolvers = {
 
     Parks: async () => {
       return Parks.find();
+    },
+    statePark: async (parent, {statesxx}) => {
+      return Parks.find({states: statesxx});
     }
+  
   
   },
 

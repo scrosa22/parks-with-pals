@@ -23,7 +23,9 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    Parks: Parks!
+    Parks: [Parks]!
+    statePark(statexx: String!): Parks
+
   }
  
 
