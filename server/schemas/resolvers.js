@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Profile } = require('../models');
+const { Parks } = require('../models');
 const { signToken } = require('../utils/auth');
 const fetch = require("node-fetch");
 
@@ -17,10 +18,20 @@ const resolvers = {
       return Profile.findOne({ _id: profileId });
     },
 
+
     // Parks: async (parent,{ parksearch}) => {
     //   const response = await fetch(`https://developer.nps.gov/api/v1/parks?parkCode=${parksearch}` + `&api_key=${APIKey}`);
     //   return response.json();
     // }
+
+    // Parks: async () => {
+    //  return Parks.find();
+    // },
+    // statePark: async (parent, {statesxx}) => {
+    //  return Parks.find({states: statesxx});
+    // }
+  
+
   
   },
 

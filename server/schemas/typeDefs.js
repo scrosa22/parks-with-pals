@@ -14,10 +14,22 @@ const typeDefs = gql`
     profile: Profile
   }
 
+  type Parks {
+    fullName: String
+    description: String
+    states: String
+  }
+
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
+    Parks: [Parks]!
+    statePark(statexx: String!): Parks
+
   }
+ 
+
+
 
   type Mutation {
     addProfile(name: String!, email: String!, password: String!): Auth
@@ -28,7 +40,9 @@ const typeDefs = gql`
     removeSkill(profileId: ID!, skill: String!): Profile
 
 
+
     
+
 
 
 
