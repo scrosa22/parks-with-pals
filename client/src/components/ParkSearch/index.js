@@ -7,23 +7,46 @@ let stateSearch = document.getElementById('parksearch-box')
 const stateSelect = document.getElementById('parksearch-btn')
 
 
-function displayparks (event) {
-  event.preventDefault();
-  if(stateSelect.val().trim()!==""){
-      stateSearch=stateSelect.val().trim();
-      ParkSearch(stateSearch);
-  }
-}
+// function displayparks (event) {
+//   event.preventDefault();
+//   if(stateSearch.val().trim()!==""){
+//       stateSearch=stateSearch.val().trim();
+//       ParkSearch(stateSearch);
+//     }
+//   }
+  
+  // stateSelect.addEventListener('onclick', e => {
+    //     const statexx = stateSearch.value
+    //   ParkSearch(statexx)
+    
+    // })
+    
+    
+    // continentSelect.addEventListener('change', async e => {
+    //   const continentCode = e.target.value
+    //   const countries = await getContinentCountries(continentCode)
+    //   countryList.innerHTML = ''
+    //   countries.forEach(country => {
+    //     const element = document.createElement('div')
+    //     element.innerText = country.name
+    //     countryList.append(element)
+    //   })
+    // })
 
-function ParkSearch(stateSearch) {
- 
-      fetch('https://developer.nps.gov/api/v1/parks?stateCode=GA&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0')
+
+function ParkSearch() {
+    const stateSearchxx = stateList
+      fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${stateSearchxx}&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0`)
       .then(res => res.json())
       .then(data => {
         data.data.forEach(state => {
           const element = document.createElement("div")
-          element.innerText += state.name
-          element.innerText += state.designation
+          element.innerHTML += "Name:" + state.fullName + "<br />"
+          element.innerHTML += "Description:" +state.description + "<br />"
+          element.innerHTML += "Weather Info:" +state.weatherInfo + "<br />"
+          element.innerHTML += "Fees :" +state.entranceFees + "<br />"
+
+          element.innerHTML += "<br />"+ "<br />" + "<br />"
           stateList.append(element)
 
 
@@ -31,7 +54,9 @@ function ParkSearch(stateSearch) {
         }) 
   });
 
- 
+
+
+
 
 
   return (
@@ -42,21 +67,25 @@ function ParkSearch(stateSearch) {
       <div class="input-group mb-3">
     
 
-        <select id="state-select">
+        {/* <select id="state-select">
         <option selected hidden>Select a state</option>
-        </select>
+        </select> */}
       </div>
 
+      <h3>National Park Search</h3>
+      
       <form class="js-form">
-      <input type="text" id="parksearch-box" class="form-control form-control-lg rounded" value="GA"/>
-      <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
+      <input type="text" id="parksearch-box" class="form-control form-control-lg rounded" />
+      <button type="button" id="parksearch-btn" class="btn btn-outline-primary" >Search by state</button>
       </form>
-      <div id="state-list"></div>
+
+
+      <div class="card-header text-dark p-5 m-2" id="state-list"></div>
 
 
 
       {/* <div class="container">
-        <h3>National Park Finder</h3>
+      
         <form class="js-form">
         <label for="search-term">Enter one or more state abbreviations, separated by commas: </label>
         <input type="text" class="form-control form-control-lg rounded" value="State" aria-label="readonly input example" readonly />
