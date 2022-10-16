@@ -20,7 +20,7 @@ const Reviews = () => {
           ) : (
             <ProfileList
               profiles={profiles}
-              title="✨ Parks Reviews ✨:"
+              title="✨ Parks Reviews ✨"
             />
           )}
         </div>
