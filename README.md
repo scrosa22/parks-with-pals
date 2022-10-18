@@ -4,4 +4,4 @@ This app was created to help people connect outdoors! search for National Parks 
 
 ## Use
 
-https://parkswithpals.herokuapp.com/Home
+https://parkswithpals.herokuapp.com/
