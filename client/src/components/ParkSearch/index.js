@@ -29,9 +29,12 @@ const SearchParks = () => {
         description: park.description,
         fees: park.entranceFees || ["No Fee data to display"],
         directionsInfo: park.directionsInfo || ["No direction data to display"],
-        states: park.states
+        weatherInfo: park.weatherInfo,
+        states: park.states,
+        images: park.images[park.images.url],
+        designation: park.designation
       }));
-
+      
       setSearchedParks(parkData);
       setSearchInput("");
     } catch (err) {
@@ -77,15 +80,21 @@ const SearchParks = () => {
           {searchedParks.map((park) => {
             return (
               <Card key={park.fullName} border="dark">
-            
                 <Card.Body>
-                  <Card.Title>{park.fullName}</Card.Title>
-                  <p>Name: {park.fullName}</p>
+                  {park.images}
+                  <h3>{park.fullName}</h3>
+                  <br></br>                   
+                  <b>Description: </b> {park.description}
+                  <br></br><br></br>
+                  <b>Weather Info: </b> {park.weatherInfo}  
+                  <br></br><br></br>
+                  <b>Directions: </b> {park.directionsInfo}
+                  <br></br><br></br>
+                  <b>Site Designation: </b> {park.designation} 
                   <br></br>
-
-                  <Card.Text>Description: {park.description}</Card.Text>
-                  <Card.Text>Directions: {park.directionsInfo}</Card.Text>
-                  <Card.Text>Fees: {park.entranceFees}</Card.Text>
+                  <b>States:</b> {park.states}
+                 
+                 
 
                   {/* { (
                     <Button
