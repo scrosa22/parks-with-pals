@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  CardColumns,
-} from "react-bootstrap";
+import {Container,Col,Form,Button,Card,CardColumns,} from "react-bootstrap";
 
 // const stateList2 = "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
 
@@ -34,7 +27,7 @@ const SearchParks = () => {
         Name: park.fullName,
         description: park.description,
         fees: park.entranceFees || ["No Fee data to display"],
-        Directions: park.directionsInfo,
+        directionsInfo: park.directionsInfo || ["No direction data to display"],
         states: park.states
       }));
 
