@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {Container,Col,Form,Button,Card,CardColumns,} from "react-bootstrap";
 
@@ -38,8 +39,10 @@ const SearchParks = () => {
     }
   };
 
+
   return (
     <div>
+
 
       <Container>
       <h3>National Park Search</h3>
@@ -105,6 +108,7 @@ const SearchParks = () => {
       </Container>
 
       <div class="card-header text-dark p-5 m-2" id="state-list"></div>
+
     </div>
   );
 };

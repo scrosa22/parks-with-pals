@@ -1,8 +1,8 @@
 import React from 'react';
-
+import background from '../../Images/nature.jpg'
 const Footer = () => {
   return (
-    <footer className="w-100 mt-auto text-dark p-4 bg-light">
+    <footer style={{ backgroundImage: `url(${background})` }} className="w-100 mt-auto text-dark p-4 bg-light">
       <div className="container text-center mb-5">  
 
         <a href="https://github.com/OrtalWikoff"><img src="https://img.icons8.com/color/48/000000/github-2.png" alt="Github" class="icon"/></a>
