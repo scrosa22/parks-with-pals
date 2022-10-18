@@ -1,108 +1,119 @@
-import React from 'react';
+import React, { useState } from "react";
+import {
+  Container,
+  Col,
+  Form,
+  Button,
+  Card,
+  CardColumns,
+} from "react-bootstrap";
 
-const stateList = document.getElementById('state-list')
-const stateList2 = "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY"
+// const stateList2 = "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
 
-let stateSearch = document.getElementById('parksearch-box')
-const stateSelect = document.getElementById('parksearch-btn')
+const SearchParks = () => {
+  const [searchedParks, setSearchedParks] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (!searchInput) {
+      return false;
+    }
+    try {
+      const response = await fetch(
+        `https://developer.nps.gov/api/v1/parks?stateCode=${searchInput}&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0`
+      );
 
-// function displayparks (event) {
-//   event.preventDefault();
-//   if(stateSearch.val().trim()!==""){
-//       stateSearch=stateSearch.val().trim();
-//       ParkSearch(stateSearch);
-//     }
-//   }
-  
-  // stateSelect.addEventListener('onclick', e => {
-    //     const statexx = stateSearch.value
-    //   ParkSearch(statexx)
-    
-    // })
-    
-    
-    // continentSelect.addEventListener('change', async e => {
-    //   const continentCode = e.target.value
-    //   const countries = await getContinentCountries(continentCode)
-    //   countryList.innerHTML = ''
-    //   countries.forEach(country => {
-    //     const element = document.createElement('div')
-    //     element.innerText = country.name
-    //     countryList.append(element)
-    //   })
-    // })
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
 
+      const { data } = await response.json();
 
-function ParkSearch() {
-    const stateSearchxx = stateList
-      fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${stateSearchxx}&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0`)
-      .then(res => res.json())
-      .then(data => {
-        data.data.forEach(state => {
-          const element = document.createElement("div")
-          element.innerHTML += "Name:" + state.fullName + "<br />"
-          element.innerHTML += "Description:" +state.description + "<br />"
-          element.innerHTML += "Weather Info:" +state.weatherInfo + "<br />"
-          element.innerHTML += "Fees :" +state.entranceFees + "<br />"
+      const parkData = data.map((park) => ({
+        Name: park.fullName,
+        description: park.description,
+        fees: park.entranceFees || ["No Fee data to display"],
+        Directions: park.directionsInfo,
+        states: park.states
+      }));
 
-          element.innerHTML += "<br />"+ "<br />" + "<br />"
-          stateList.append(element)
-
-
-          
-        }) 
-  });
-
-
-
-
-
+      setSearchedParks(parkData);
+      setSearchInput("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-
     <div>
 
-
-      <div class="input-group mb-3">
-    
-
-        {/* <select id="state-select">
-        <option selected hidden>Select a state</option>
-        </select> */}
-      </div>
-
+      <Container>
       <h3>National Park Search</h3>
-      
-      <form class="js-form">
-      <input type="text" id="parksearch-box" class="form-control form-control-lg rounded" />
-      <button type="button" id="parksearch-btn" class="btn btn-outline-primary" >Search by state</button>
-      </form>
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Row>
+            <Col >
+              <Form.Control
+                name="searchInput"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                type="text"
+                size="lg"
+                placeholder="Search for a park"
+              />
+            </Col>
+            <Col>
+              <Button type="submit" variant="success" size="lg">
+                Submit Search
+              </Button>
+            </Col>
+          </Form.Row>
+        </Form>
+      </Container>
 
+      <Container>
+        <h2>
+          {/* {searchedParks.length
+            ? `Viewing ${searchedParks.length} results:`
+            : 'Search for a park to begin'} */}
+        </h2>
+        <CardColumns>
+          {searchedParks.map((park) => {
+            return (
+              <Card key={park.fullName} border="dark">
+            
+                <Card.Body>
+                  <Card.Title>{park.fullName}</Card.Title>
+                  <p>Name: {park.name}</p>
+                  <br></br>
+
+                  <Card.Text>Description: {park.description}</Card.Text>
+                  <Card.Text>Directions: {park.directionsInfo}</Card.Text>
+                  <Card.Text>Fees: {park.entranceFees}</Card.Text>
+
+                  {/* { (
+                    <Button
+                      disabled={savedparkNames?.some(
+                        (savedPark) => savedPark === park.fullName
+                      )}
+                      className="btn-block btn-info"
+                      onClick={() => handleSavePark(park.fullName)}
+                    >
+                      {savedPark?.some((savedPark) => savedPark === park.fullName)
+                        ? 'Park Already Saved!'
+                        : 'Save This Park!'}
+                    </Button>
+                  )} */}
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
 
       <div class="card-header text-dark p-5 m-2" id="state-list"></div>
-
-
-
-      {/* <div class="container">
-      
-        <form class="js-form">
-        <label for="search-term">Enter one or more state abbreviations, separated by commas: </label>
-        <input type="text" class="form-control form-control-lg rounded" value="State" aria-label="readonly input example" readonly />
-        <label for="max-results">Maximum number of results to return: </label>
-        <input type="number" name="max-results" id="js-max-results" value="10"/>
-        <input type="submit" value="Go!"></input>
-
-        </form>
-        <br></br>
-        <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
-        </div> */}
-
-
-
     </div>
-  )
-}
+  );
+};
 
-export default ParkSearch;
-
+export default SearchParks;
