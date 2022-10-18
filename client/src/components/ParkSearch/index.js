@@ -24,7 +24,7 @@ const SearchParks = () => {
       const { data } = await response.json();
 
       const parkData = data.map((park) => ({
-        Name: park.fullName,
+        fullName: park.fullName,
         description: park.description,
         fees: park.entranceFees || ["No Fee data to display"],
         directionsInfo: park.directionsInfo || ["No direction data to display"],
@@ -77,7 +77,7 @@ const SearchParks = () => {
             
                 <Card.Body>
                   <Card.Title>{park.fullName}</Card.Title>
-                  <p>Name: {park.name}</p>
+                  <p>Name: {park.fullName}</p>
                   <br></br>
 
                   <Card.Text>Description: {park.description}</Card.Text>
