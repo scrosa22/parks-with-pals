@@ -18,13 +18,20 @@ const resolvers = {
       return Profile.findOne({ _id: profileId });
     },
 
-    Parks: async () => {
-      return Parks.find();
-    },
-    statePark: async (parent, {statesxx}) => {
-      return Parks.find({states: statesxx});
-    }
+
+    // Parks: async (parent,{ parksearch}) => {
+    //   const response = await fetch(`https://developer.nps.gov/api/v1/parks?parkCode=${parksearch}` + `&api_key=${APIKey}`);
+    //   return response.json();
+    // }
+
+    // Parks: async () => {
+    //  return Parks.find();
+    // },
+    // statePark: async (parent, {statesxx}) => {
+    //  return Parks.find({states: statesxx});
+    // }
   
+
   
   },
 

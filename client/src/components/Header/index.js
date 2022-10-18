@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import background from '../../Images/nature.jpg'
+
 
 import Auth from '../../utils/auth';
 
@@ -9,13 +11,13 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-light text-dark mb-1 py-1 display-flex align-center">
+    <header style={{ backgroundImage: `url(${background})` }}className="bg-light text-dark mb-1 py-1 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-start text-center">
         <Link className="text-dark" to="/">
-          <h1 className="m-0" style={{ fontSize: '2rem' }}>
+          <h1 className="m-0" style={{ fontSize: '2rem', color: 'white' }}>
 
           ꧁ Parks with Pals  ꧂
-          </h1><br></br>
+          </h1><br></br><br></br>
 
         </Link>
         <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
