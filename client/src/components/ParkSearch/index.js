@@ -1,82 +1,116 @@
-import React from 'react';
 
-const stateList = document.getElementById('state-list')
-const stateList2 = "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY"
+import React, { useState } from "react";
+import {Container,Col,Form,Button,Card,CardColumns,} from "react-bootstrap";
 
+// const stateList2 = "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
 
-let stateSearch = document.getElementById('parksearch-box')
-const stateSelect = document.getElementById('parksearch-btn')
+const SearchParks = () => {
+  const [searchedParks, setSearchedParks] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (!searchInput) {
+      return false;
+    }
+    try {
+      const response = await fetch(
+        `https://developer.nps.gov/api/v1/parks?stateCode=${searchInput}&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0`
+      );
 
-function displayparks (event) {
-  event.preventDefault();
-  if(stateSelect.val().trim()!==""){
-      stateSearch=stateSelect.val().trim();
-      ParkSearch(stateSearch);
-  }
-}
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
 
-function ParkSearch(stateSearch) {
- 
-      fetch('https://developer.nps.gov/api/v1/parks?stateCode=GA&stateCode=&api_key=Tk6fBL9Bwm4TDRp2fHSPEN8zDwt9ZHzowZbMSeI0')
-      .then(res => res.json())
-      .then(data => {
-        data.data.forEach(state => {
-          const element = document.createElement("div")
-          element.innerText += state.name
-          element.innerText += state.designation
-          stateList.append(element)
+      const { data } = await response.json();
 
+      const parkData = data.map((park) => ({
+        Name: park.fullName,
+        description: park.description,
+        fees: park.entranceFees || ["No Fee data to display"],
+        directionsInfo: park.directionsInfo || ["No direction data to display"],
+        states: park.states
+      }));
 
-          
-        }) 
-  });
-
- 
+      setSearchedParks(parkData);
+      setSearchInput("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
   return (
-
     <div>
 
 
+      <Container>
+      <h3>National Park Search</h3>
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Row>
+            <Col >
+              <Form.Control
+                name="searchInput"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                type="text"
+                size="lg"
+                placeholder="Search for a park"
+              />
+            </Col>
+            <Col>
+              <Button type="submit" variant="success" size="lg">
+                Submit Search
+              </Button>
+            </Col>
+          </Form.Row>
+        </Form>
+      </Container>
 
-      <div className="input-group mb-3">
+      <Container>
+        <h2>
+          {/* {searchedParks.length
+            ? `Viewing ${searchedParks.length} results:`
+            : 'Search for a park to begin'} */}
+        </h2>
+        <CardColumns>
+          {searchedParks.map((park) => {
+            return (
+              <Card key={park.fullName} border="dark">
+            
+                <Card.Body>
+                  <Card.Title>{park.fullName}</Card.Title>
+                  <p>Name: {park.name}</p>
+                  <br></br>
 
-    
+                  <Card.Text>Description: {park.description}</Card.Text>
+                  <Card.Text>Directions: {park.directionsInfo}</Card.Text>
+                  <Card.Text>Fees: {park.entranceFees}</Card.Text>
 
-        <select id="state-select">
-        <option selected hidden>Select a state</option>
-        </select>
-      </div>
+                  {/* { (
+                    <Button
+                      disabled={savedparkNames?.some(
+                        (savedPark) => savedPark === park.fullName
+                      )}
+                      className="btn-block btn-info"
+                      onClick={() => handleSavePark(park.fullName)}
+                    >
+                      {savedPark?.some((savedPark) => savedPark === park.fullName)
+                        ? 'Park Already Saved!'
+                        : 'Save This Park!'}
+                    </Button>
+                  )} */}
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
 
-      <form class="js-form">
-      <input type="text" id="parksearch-box" class="form-control form-control-lg rounded" value="GA"/>
-      <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
-      </form>
-      <div id="state-list"></div>
-
-
-
-      {/* <div class="container">
-        <h3>National Park Finder</h3>
-        <form class="js-form">
-        <label for="search-term">Enter one or more state abbreviations, separated by commas: </label>
-        <input type="text" class="form-control form-control-lg rounded" value="State" aria-label="readonly input example" readonly />
-        <label for="max-results">Maximum number of results to return: </label>
-        <input type="number" name="max-results" id="js-max-results" value="10"/>
-        <input type="submit" value="Go!"></input>
-
-        </form>
-        <br></br>
-        <button type="button" id="parksearch-btn" class="btn btn-outline-primary">Search for a park</button>
-        </div> */}
-
-
+      <div class="card-header text-dark p-5 m-2" id="state-list"></div>
 
     </div>
-  )
-}
+  );
+};
 
-export default ParkSearch;
-
+export default SearchParks;
