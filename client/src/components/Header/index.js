@@ -38,7 +38,7 @@ const Header = () => {
               <Link className="btn btn-outline-primary mr-5" to="/signup">
                 Signup
               </Link>
-              <Link className="btn btn-outline-primary mr-5" to="/Reviews">
+              <Link className="btn btn-outline-primary mr-5" to="/">
               Reviews
               </Link>
               
